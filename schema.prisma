@@ -1,0 +1,20 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+generator py {
+  provider = "prisma-client-py"
+}
+
+model Upload {
+  id   String @id @default(uuid())
+  processed  Boolean @default(false)
+}
+
+model Metadata {
+  id Int @id @default(autoincrement())
+  uploader String
+  uploadTime DateTime
+  filename String
+  uuid String
+}
